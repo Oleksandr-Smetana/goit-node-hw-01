@@ -1,6 +1,5 @@
-// const contacts = require("./contacts");
 const { Command } = require('commander');
-const { mainModule } = require('process');
+
 const {
   listContacts,
   getContactById,
@@ -17,16 +16,9 @@ program
   .option('-p, --phone <type>', 'user phone');
 
 program.parse(process.argv);
-
 const argv = program.opts();
 
-async function invokeAction({
-  action,
-  id,
-  name,
-  email,
-  phone,
-}) {
+async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list':
       const contacts = await listContacts();
@@ -59,6 +51,7 @@ async function invokeAction({
 
 invokeAction(argv);
 
+// ===================================================
 // invokeAction({ action: "list" });
 
 // const id = '10';
